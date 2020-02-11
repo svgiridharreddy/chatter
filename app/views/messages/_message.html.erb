@@ -1,0 +1,13 @@
+<div class="well">
+  <span class="badge badge-success username">
+    <%= message.user.username %>:
+  </span>
+  <span class="badge badge-light msg-text">
+    <%= message.body %>
+  </span>
+  <span class="msg-time">
+    <small>
+    <%= message.created_at.strftime("%I:%M %p") %>
+    </small>
+  </span>
+</div>

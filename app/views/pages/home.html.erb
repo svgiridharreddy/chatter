@@ -1,0 +1,26 @@
+<div class="list-group">
+  <% @online_users.each do |user| %>
+    <%= link_to "#{user.username}",class: "list-group-item list-group-item-action" %>
+  <% end %>
+</div>
+<div class="jumbotron" style="background:transparent !important">
+  <h1 class="display-4 h1-title">Chatter</h1>
+
+  <div class="well" id="chatbox">
+    <% @messages.each do |message| %>
+      <%= render "messages/message",message: message %>
+    <% end %>
+  </div>
+  <% if current_user %>
+  <%= form_with(model: @message) do |f| %>
+    <div class="input-group mb-3">
+      <%= f.text_field :body,placeholder: "Say something...",class: "form-control msg-body" %>
+      <div class="input-group-append">
+        <%= f.submit "Send",class: "btn btn-secondary btn-send" %>
+      </div>
+    </div>
+  <% end %>
+  <% else %>
+   <p class="signin-to-msg">You need to <%= link_to "Sign in", new_user_session_path %> in order to chat</p>
+  <% end %>
+</div>
